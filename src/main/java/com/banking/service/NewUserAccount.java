@@ -3,8 +3,12 @@ package com.banking.service;
 
 import java.util.Scanner;
 
+import com.banking.utils.MainMenu;
+
 public class NewUserAccount extends UserAccounts {
 
+	MainMenu goToMenu = new MainMenu();
+	
 	Scanner scan = new Scanner(System.in);
 	
 	public NewUserAccount() {
@@ -29,7 +33,7 @@ public class NewUserAccount extends UserAccounts {
 		String input = scan.nextLine().toLowerCase();
 
 		if (input == "y"){
-				//MainMenu
+				goToMenu.mainMenu();
 		} else {
 			updateUserAccount(input, input, phoneNum, input);
 		}
