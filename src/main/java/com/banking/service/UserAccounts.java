@@ -19,7 +19,7 @@ public class UserAccounts {
 	
 	//prompts user to enter information to update their account
 	//if there is incorrect information calls the updateAccount method again
-	public void updateAccount(String FirstName, String LastName, long PhoneNum, String email) {
+	public void updateUserAccount(String FirstName, String LastName, long PhoneNum, String email) {
 
 		System.out.println("Please enter your information:");
 
@@ -37,7 +37,7 @@ public class UserAccounts {
 			menuOptions.mainMenu();
 		} else {
 			//re-runs prompts user to put in their information
-			updateAccount(input, input, phoneNum, input);
+			updateUserAccount(input, input, phoneNum, input);
 		}
 
 	}

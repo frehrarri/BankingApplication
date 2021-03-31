@@ -27,7 +27,7 @@ public class StartMenu {
 			menuOptions.mainMenu();
 		} else if (select.equals("n")){
 			//passes in our updateAccount method from UserAccounts class to our newAccount object
-			account.updateAccount(null, null, 0, null);
+			account.updateUserAccount(null, null, 0, null);
 		} else {
 			System.out.println("Invalid entry. Please try again.");
 			startMenu();

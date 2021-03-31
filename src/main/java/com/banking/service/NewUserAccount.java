@@ -31,7 +31,7 @@ public class NewUserAccount extends UserAccounts {
 		if (input == "y"){
 				//MainMenu
 		} else {
-			updateAccount(input, input, phoneNum, input);
+			updateUserAccount(input, input, phoneNum, input);
 		}
 		
 	}
