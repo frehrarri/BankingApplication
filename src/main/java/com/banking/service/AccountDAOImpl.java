@@ -27,7 +27,7 @@ public class AccountDAOImpl implements AccountDAO {
 		previousBal = prevBal.preBalanceSum(0);
 	}
 	
-	
+	@Override
 	//withdraws funds from account
 	public void withdraw() {
 		previousBal = prevBal.preBalanceSum(0);
@@ -35,11 +35,18 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	
-	
+	@Override
 	//transfers funds between accounts
 	public void transfer() {
 		previousBal = prevBal.preBalanceSum(0);
 		//insert data structures & SQL Queries
+	}
+
+
+	@Override
+	public void updateAccount() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
