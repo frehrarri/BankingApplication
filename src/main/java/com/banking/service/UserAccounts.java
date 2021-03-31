@@ -4,8 +4,14 @@ import java.util.Scanner;
 
 import com.banking.utils.MainMenu;
 
-public class UserAccounts extends Accounts {
+public class UserAccounts {
 
+	protected String firstName;
+	protected String lastName;
+	protected long phoneNum;
+	protected String email;
+	protected double totalBal;
+	
 	MainMenu menuOptions = new MainMenu();
 	
 	Scanner scan = new Scanner(System.in);
