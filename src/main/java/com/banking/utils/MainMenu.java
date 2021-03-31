@@ -1,12 +1,11 @@
 package com.banking.utils;
 
-import com.banking.repos.AccountDAOImpl;
 import com.banking.service.*;
 import java.util.Scanner;
 
 public class MainMenu {
 
-	AccountDAOImpl impl = new AccountDAOImpl();
+	UserAccounts action = new UserAccounts();
 	//UserAccounts changeInfo = new UserAccounts();
 	Scanner scan = new Scanner(System.in);
 	
@@ -14,13 +13,13 @@ public class MainMenu {
 	//Executes the method associated with the choice located in the AccountDAOImpl interface
 	public void mainMenu() {
 		
-		System.out.println("Choose an option:");
-		System.out.println("1. Update account information.");
-		System.out.println("2. Make a deposit to your account.");
-		System.out.println("3. Withraw from your account.");
-		System.out.println("4. Transfer between accounts.");
-		System.out.println("5. Check account balance.");
-		System.out.println("0. Exit menu.");
+		System.out.println("Choose an option: \n"
+			+ "1. Update account information.\n"
+			+ "2. Make a deposit to your account.\n"
+			+ "3. Withraw from your account.\n"
+			+ "4. Transfer between accounts.\n"
+			+ "5. Check account balance.\n"
+			+ "0. Exit menu.");
 		
 		int select = scan.nextInt();
 		scan.nextLine();
@@ -33,15 +32,15 @@ public class MainMenu {
 			break;
 		case 2:
 		//opens deposit interface
-			impl.deposit();
+			action.deposit();
 			break;
 		case 3:
 		//opens withdraw interface
-			impl.withdraw();
+			action.withdraw();
 			break;
 		case 4:
 		//opens transfer interface
-			impl.transfer();
+			action.transfer();
 			break;
 		case 5:
 		//returns user's current account balance
