@@ -10,7 +10,7 @@ public class UserAccounts {
 	protected String lastName;
 	protected long phoneNum;
 	protected String email;
-	protected double totalBal;
+	protected double balance;
 	
 	MainMenu menuOptions = new MainMenu();
 	
@@ -96,9 +96,14 @@ public class UserAccounts {
 	
 	
 	//returns previous total account balance
-	public double getBalance(double totalBal) {
-		return totalBal;
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
+	
+	public double getBalance() {
+		return balance;
+	}
+	
 	
 
 	public void deposit() {
