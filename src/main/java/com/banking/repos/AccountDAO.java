@@ -1,4 +1,4 @@
-package com.banking.service;
+package com.banking.repos;
 
 public interface AccountDAO {
 	

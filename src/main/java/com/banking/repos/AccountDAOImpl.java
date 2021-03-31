@@ -1,8 +1,9 @@
-package com.banking.service;
+package com.banking.repos;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.banking.service.UserAccounts;
 import com.banking.utils.ConnectionUtil;
 
 public class AccountDAOImpl implements AccountDAO {
