@@ -1,16 +1,17 @@
 package com.banking.service;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import com.banking.utils.MainMenu;
 
-public class UserAccounts {
+public class UserAccounts implements Serializable {
 
-	protected String firstName;
-	protected String lastName;
-	protected long phoneNum;
-	protected String email;
-	protected double balance;
+	private String firstName;
+	private String lastName;
+	private long phoneNum;
+	private String email;
+	private double balance;
 	
 	MainMenu menuOptions = new MainMenu();
 	
@@ -95,7 +96,7 @@ public class UserAccounts {
 
 	
 	
-	//returns previous total account balance
+	//returns account balance
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
@@ -118,5 +119,79 @@ public class UserAccounts {
 
 	public void transfer() {
 	}
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(balance);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((menuOptions == null) ? 0 : menuOptions.hashCode());
+		result = prime * result + (int) (phoneNum ^ (phoneNum >>> 32));
+		result = prime * result + ((scan == null) ? 0 : scan.hashCode());
+		return result;
+	}
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserAccounts other = (UserAccounts) obj;
+		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (menuOptions == null) {
+			if (other.menuOptions != null)
+				return false;
+		} else if (!menuOptions.equals(other.menuOptions))
+			return false;
+		if (phoneNum != other.phoneNum)
+			return false;
+		if (scan == null) {
+			if (other.scan != null)
+				return false;
+		} else if (!scan.equals(other.scan))
+			return false;
+		return true;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "UserAccounts [firstName=" + firstName + ", lastName=" + lastName + ", phoneNum=" + phoneNum + ", email="
+				+ email + ", balance=" + balance + ", menuOptions=" + menuOptions + ", scan=" + scan + "]";
+	}
+	
+	
 	
 }
