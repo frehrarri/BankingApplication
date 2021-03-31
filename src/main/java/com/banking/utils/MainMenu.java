@@ -18,9 +18,11 @@ public class MainMenu {
 		System.out.println("2. Make a deposit to your account.");
 		System.out.println("3. Withraw from your account.");
 		System.out.println("4. Transfer between accounts.");
-		System.out.println("5. Exit menu.");
+		System.out.println("5. Check account balance.");
+		System.out.println("0. Exit menu.");
 		
 		int select = scan.nextInt();
+		scan.nextLine();
 
 		switch (select) {
 
@@ -41,14 +43,19 @@ public class MainMenu {
 			impl.transfer();
 			break;
 		case 5:
-			System.out.println("5. Exit menu");
+		//returns user's current account balance
+			break;
+		case 0:
+			System.out.println("Thank you for using the Easy Banking application.");
+			StartMenu returnToStart = new StartMenu();
+			returnToStart.startMenu();
 			break;
 		default:
 			System.out.println("Invalid option. Please try again.\nSelect a number.");
 			mainMenu();
 			break;
 		}
-
+		mainMenu();
 	}
 
 }
