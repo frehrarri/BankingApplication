@@ -96,7 +96,7 @@ public class UserAccounts {
 	
 	
 	//returns previous total account balance
-	public double preBalanceSum(double totalBal) {
+	public double getBalance(double totalBal) {
 		return totalBal;
 	}
 	
