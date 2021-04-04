@@ -35,7 +35,7 @@ public class NewUserAccount extends UserAccounts {
 		String input = scan.nextLine().toLowerCase();
 
 		if (input == "y"){
-				System.out.println("Your user account ID is "+genId());
+				System.out.println("Your user account ID is "+getUid());
 				goToMenu.mainMenu();
 		} else {
 			updateUserAccount(input, input, phoneNum, input);
