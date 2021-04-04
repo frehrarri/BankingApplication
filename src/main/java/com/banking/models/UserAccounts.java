@@ -105,21 +105,6 @@ public class UserAccounts implements Serializable {
 		return balance;
 	}
 	
-	
-
-	public void deposit() {
-		
-	}
-	
-
-	public void withdraw() {
-	}
-
-	
-
-	public void transfer() {
-	}
-
 
 
 
