@@ -3,6 +3,7 @@ package com.banking.models;
 import java.io.Serializable;
 import java.util.Scanner;
 
+import com.banking.service.NewUserAccount;
 import com.banking.utils.MainMenu;
 
 public class UserAccounts implements Serializable {
@@ -12,8 +13,10 @@ public class UserAccounts implements Serializable {
 	private long phoneNum;
 	private String email;
 	private double balance;
+	private String genId;
 	
 	MainMenu menuOptions = new MainMenu();
+	NewUserAccount userId = new NewUserAccount();
 	
 	Scanner scan = new Scanner(System.in);
 
@@ -106,6 +109,16 @@ public class UserAccounts implements Serializable {
 	}
 	
 
+	//stores and returns id for user
+	public void setUid(String genId) {
+		this.genId = userId.genId();
+	}
+	
+	public String getUid() {
+		return genId;
+	}
+	
+	
 
 
 	@Override
