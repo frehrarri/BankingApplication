@@ -109,7 +109,7 @@ public class UserAccounts implements Serializable {
 	}
 	
 
-	//stores and returns id for user
+	//stores and returns id for AccountDAOImpl interface to save to database
 	public void setUid(String genId) {
 		this.genId = userId.genId();
 	}
