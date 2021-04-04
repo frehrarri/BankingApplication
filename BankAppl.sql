@@ -6,7 +6,7 @@ CREATE TABLE account_info(account_id SERIAL, first_name VARCHAR(30), last_name V
 
 ALTER TABLE account_info ADD COLUMN account_balance NUMERIC (11,2);
 
-ALTER TABLE account_info ADD PRIMARY KEY (account_id);
+ALTER TABLE account_info PRIMARY KEY (account_id);
 
 CREATE TABLE credentials(
 	id SERIAL,
@@ -19,5 +19,8 @@ CREATE TABLE credentials(
 			REFERENCES account_info(account_id)
 );
 
+ALTER TABLE account_info ADD COLUMN bank_id VARCHAR(20);
 
-DROP TABLE IF EXISTS credentials
+ALTER TABLE account_info DROP CONSTRAINT account_id;
+
+DROP DATABASE user_accounts;
