@@ -3,6 +3,7 @@ package com.banking.service;
 
 import java.util.Scanner;
 
+import com.banking.models.UserAccounts;
 import com.banking.utils.MainMenu;
 
 public class NewUserAccount extends UserAccounts {

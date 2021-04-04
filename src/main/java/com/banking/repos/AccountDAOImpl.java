@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.banking.service.UserAccounts;
+import com.banking.models.UserAccounts;
 import com.banking.utils.ConnectionUtil;
 
 public class AccountDAOImpl implements AccountDAO {
@@ -17,6 +17,8 @@ public class AccountDAOImpl implements AccountDAO {
 			String sql = "UPDATE account_info SET balance = ? WHERE account_id = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			//ps.setDouble(updateUserAccount.getBalance());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.banking.utils;
 
+import com.banking.models.UserAccounts;
 import com.banking.service.*;
 
 import java.io.Serializable;

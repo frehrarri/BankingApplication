@@ -1,6 +1,6 @@
 package com.banking.repos;
 
-import com.banking.service.UserAccounts;
+import com.banking.models.UserAccounts;
 
 public interface AccountDAO {
 	
