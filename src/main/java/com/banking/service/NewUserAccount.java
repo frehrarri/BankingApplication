@@ -2,6 +2,7 @@
 package com.banking.service;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 import com.banking.models.UserAccounts;
 import com.banking.utils.MainMenu;
@@ -34,6 +35,7 @@ public class NewUserAccount extends UserAccounts {
 		String input = scan.nextLine().toLowerCase();
 
 		if (input == "y"){
+				System.out.println("Your user account ID is "+genId());
 				goToMenu.mainMenu();
 		} else {
 			updateUserAccount(input, input, phoneNum, input);
@@ -41,6 +43,10 @@ public class NewUserAccount extends UserAccounts {
 		
 	}
 	
+	public String genId() {
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
 	
 
 }
