@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 import com.banking.models.UserAccounts;
+import com.banking.service.UserAccountServices;
 
 public class StartMenu implements Serializable{
 
@@ -28,7 +29,15 @@ public class StartMenu implements Serializable{
 			System.out.println("Please enter your username and password");
 			//insert authentication service
 			//after authentication goes to main menu
+			//returns user's current account balance and information
+			System.out.println("What is the account number?");
+			
+			int response = scan.nextInt();
+			scan.nextLine();
+			UserAccountServices action = new UserAccountServices();
+			account = action.getAccountById(response);
 			menu.mainMenu();
+			
 		} else if (select.equals("n")){
 			//passes in our updateUserAccount method from UserAccounts class to our newAccount object
 			account.updateUserAccount(null, null, 0L, null);
