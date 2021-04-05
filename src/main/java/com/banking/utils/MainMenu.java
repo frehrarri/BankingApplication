@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class MainMenu implements Serializable {
 
 	UserAccountServices action = new UserAccountServices();
-	//UserAccounts changeInfo = new UserAccounts();
 	Scanner scan = new Scanner(System.in);
 	
 	//Prompts user to make a choice between updating account information, making a deposit or withdraw, or transferring between accounts
@@ -31,7 +30,8 @@ public class MainMenu implements Serializable {
 
 		//updates account info
 		case 1:
-			//changeInfo.updateAccount(null, null, 0, null);
+			UserAccounts account = new UserAccounts();
+			account.updateUserAccount(null, null, 0, null);
 			break;
 		case 2:
 		//opens deposit interface

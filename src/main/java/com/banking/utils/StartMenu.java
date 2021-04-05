@@ -30,8 +30,8 @@ public class StartMenu implements Serializable{
 			//after authentication goes to main menu
 			menu.mainMenu();
 		} else if (select.equals("n")){
-			//passes in our updateAccount method from UserAccounts class to our newAccount object
-			account.UserAccounts(null, null, 0, null);
+			//passes in our updateUserAccount method from UserAccounts class to our newAccount object
+			account.updateUserAccount(null, null, 0L, null);
 		} else {
 			System.out.println("Invalid entry. Please try again.");
 			startMenu();
