@@ -2,7 +2,6 @@ package com.banking.models;
 
 import java.io.Serializable;
 import java.util.Scanner;
-import java.util.UUID;
 
 import com.banking.utils.MainMenu;
 
@@ -14,7 +13,6 @@ public class UserAccounts implements Serializable {
 	private String email;
 	private double balance;
 	private int accountId;
-	private String genId = genId();
 	
 	MainMenu menu = new MainMenu();
 	 
@@ -145,12 +143,6 @@ public class UserAccounts implements Serializable {
 		return accountId;
 	}
 	
-	public String genId() {
-		String uniqueID = UUID.randomUUID().toString();
-		return uniqueID;
-	}
-
-	
 	
 	@Override
 	public int hashCode() {
@@ -161,7 +153,6 @@ public class UserAccounts implements Serializable {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((genId == null) ? 0 : genId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + (int) (phoneNum ^ (phoneNum >>> 32));
@@ -192,11 +183,6 @@ public class UserAccounts implements Serializable {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
-		if (genId == null) {
-			if (other.genId != null)
-				return false;
-		} else if (!genId.equals(other.genId))
-			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
@@ -223,7 +209,7 @@ public class UserAccounts implements Serializable {
 	@Override
 	public String toString() {
 		return "UserAccounts [firstName=" + firstName + ", lastName=" + lastName + ", phoneNum=" + phoneNum + ", email="
-				+ email + ", balance=" + balance + ", genId=" + genId + ", menu=" + menu + ", scan=" + scan + "]";
+				+ email + ", balance=" + balance + ", menu=" + menu + ", scan=" + scan + "]";
 	}
 	
 
