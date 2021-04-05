@@ -23,6 +23,12 @@ public class ConnectionUtil {
 	//creates our connection to our database
 	return DriverManager.getConnection(url, user, pass);
 
+	//tests our connection
+//	try (Connection conn = ConnectionUtil.getConnection()) {
+//		System.out.println("Connection Successful");
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//	}
 
 	}
 }
