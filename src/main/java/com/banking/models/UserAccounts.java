@@ -24,7 +24,7 @@ public class UserAccounts implements Serializable {
 	
 	//creates a first time user account with a random account id.
 	//if information is incorrect calls the updateUserAccount method to prompt them to enter correct info
-	public UserAccounts(String FirstName, String LastName, long PhoneNum, String email, String genId) {
+	public UserAccounts(String FirstName, String LastName, long PhoneNum, String email) {
 
 		System.out.println("Please enter your information:");
 
@@ -45,7 +45,7 @@ public class UserAccounts implements Serializable {
 			updateUserAccount(input, input, phoneNum, input);
 		}
 		
-		System.out.println("Your account ID is "+genId+".");
+		System.out.println("Your account ID is "++".");
 	}
 	
 	
