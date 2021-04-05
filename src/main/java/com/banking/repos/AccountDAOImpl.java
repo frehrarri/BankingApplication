@@ -24,9 +24,9 @@ public class AccountDAOImpl implements AccountDAO {
 			int index = 0;
 			ps.setDouble(++index, updateUserAccount.getBalance());
 			ps.setNull(++index, java.sql.Types.INTEGER);
-			ps.setInt(++index,  updateUserAccount.getUid());
+			ps.setInt(++index, updateUserAccount.getUid());
 			
-			ps.executeQuery(sql);
+			ps.execute(sql);
 			
 			return true;
 			
@@ -42,7 +42,7 @@ public class AccountDAOImpl implements AccountDAO {
 		try (Connection conn=ConnectionUtil.getConnection()){
 			
 			//chooses the row primary key in our database we will be saving our changes to
-			String sql = "SELECT * FROM account_info WHERE bank_id = "+accountId+";";
+			String sql = "SELECT * FROM account_info WHERE account_id = "+accountId+";";
 			
 			Statement statement = conn.createStatement();
 			
@@ -52,9 +52,9 @@ public class AccountDAOImpl implements AccountDAO {
 				
 				UserAccounts acc = new UserAccounts();
 				
-				//saves our user ID to our database by calling the setUid method from UserAccounts class
+				//saves our account ID to our database by calling the setUid method from UserAccounts class
 				acc.setUid(result.getInt("account_id"));
-				//saves our balance to database by calling setBalance method from UserAccounts class
+				//saves our account balance to database by calling setBalance method from UserAccounts class
 				acc.setBalance(result.getDouble("account_balance"));
 				return acc;
 			}
