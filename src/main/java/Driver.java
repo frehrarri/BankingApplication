@@ -8,12 +8,6 @@ public class Driver {
 		StartMenu start = new StartMenu();
 		start.startMenu();	
 	
-	
-
-		
-
-		
-
 		
 		
 		
