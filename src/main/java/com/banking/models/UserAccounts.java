@@ -19,19 +19,24 @@ public class UserAccounts implements Serializable {
 	Scanner scan = new Scanner(System.in);
 
 	public UserAccounts() {
+	}
+	
+	public UserAccounts(int accountId, double balance) {
+		this.accountId = accountId;
+		this.balance = balance;
 		
 	}
 	
-	//creates a first time user account with a random account id.
+	//creates a first time user account.
 	//if information is incorrect calls the updateUserAccount method to prompt them to enter correct info
-	public UserAccounts(String FirstName, String LastName, long PhoneNum, String email) {
+	public UserAccounts(String firstName, String lastName, long phoneNum, String email) {
 
 		System.out.println("Please enter your information:");
 
-		setFirstName(firstName);
-		setLastName(lastName);
-		setPhoneNum(phoneNum);
-		setEmail(email);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNum = phoneNum;
+		this.email = email;
 
 		System.out.println("Is this information correct? (Y/N)");
 
@@ -45,7 +50,7 @@ public class UserAccounts implements Serializable {
 			updateUserAccount(input, input, phoneNum, input);
 		}
 		
-		System.out.println("Your account ID is "++".");
+		//System.out.println("Your account ID is "++".");
 	}
 	
 	
