@@ -13,7 +13,7 @@ import com.banking.utils.ConnectionUtil;
 public class AccountDAOImpl implements AccountDAO {
 
 	@Override
-	public void updateAccount(UserAccounts updateUserAccount) {
+	public boolean updateAccount(UserAccounts updateUserAccount) {
 		
 		try (Connection conn = ConnectionUtil.getConnection()){
 			
@@ -28,10 +28,12 @@ public class AccountDAOImpl implements AccountDAO {
 			
 			ps.executeQuery(sql);
 			
+			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+			return false;
 	}
 
 	@Override
