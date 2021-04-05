@@ -2,8 +2,8 @@ package com.banking.models;
 
 import java.io.Serializable;
 import java.util.Scanner;
+import java.util.UUID;
 
-import com.banking.service.NewUserAccount;
 import com.banking.utils.MainMenu;
 
 public class UserAccounts implements Serializable {
@@ -13,17 +13,20 @@ public class UserAccounts implements Serializable {
 	private long phoneNum;
 	private String email;
 	private double balance;
-	private String genId;
+	private int accountId;
+	private String genId = genId();
 	
-	MainMenu menuOptions = new MainMenu();
-	NewUserAccount userId = new NewUserAccount();
-	
+	MainMenu menu = new MainMenu();
+	 
 	Scanner scan = new Scanner(System.in);
 
+	public UserAccounts() {
+		
+	}
 	
-	//prompts user to enter information to update their account
-	//if there is incorrect information calls the updateAccount method again
-	public void updateUserAccount(String FirstName, String LastName, long PhoneNum, String email) {
+	//creates a first time user account with a random account id.
+	//if information is incorrect calls the updateUserAccount method to prompt them to enter correct info
+	public UserAccounts(String FirstName, String LastName, long PhoneNum, String email, String genId) {
 
 		System.out.println("Please enter your information:");
 
@@ -38,15 +41,39 @@ public class UserAccounts implements Serializable {
 
 		if (input.equals("y")) {
 			//takes user to main menu
-			menuOptions.mainMenu();
+			menu.mainMenu();
 		} else {
 			//re-runs prompts user to put in their information
 			updateUserAccount(input, input, phoneNum, input);
 		}
-
+		
+		System.out.println("Your account ID is "+genId+".");
 	}
-
 	
+	
+	
+	//prompts user to enter information to update their account
+	//if there is incorrect information calls the updateAccount method again
+	public void updateUserAccount(String FirstName, String LastName, long PhoneNum, String email) {
+		System.out.println("Please enter your information:");
+
+		setFirstName(firstName);
+		setLastName(lastName);
+		setPhoneNum(phoneNum);
+		setEmail(email);
+
+		System.out.println("Is this information correct? (Y/N)");
+
+		String input = scan.nextLine().toLowerCase();
+
+		if (input.equals("y")) {
+			//takes user to main menu
+			menu.mainMenu();
+		} else {
+			//re-runs prompts user to put in their information
+			updateUserAccount(input, input, phoneNum, input);
+		}
+	}
 	
 	
 	// prompts user for first name and saves the information to their account
@@ -110,17 +137,21 @@ public class UserAccounts implements Serializable {
 	
 
 	//stores and returns id for AccountDAOImpl interface to save to database
-	public void setUid(String genId) {
-		this.genId = userId.genId();
+	public void setUid(int accountId) {
+		this.accountId = accountId;
 	}
 	
-	public String getUid() {
-		return genId;
+	public int getUid() {
+		return accountId;
 	}
 	
+	public String genId() {
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
+
 	
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -130,16 +161,16 @@ public class UserAccounts implements Serializable {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((genId == null) ? 0 : genId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((menuOptions == null) ? 0 : menuOptions.hashCode());
+		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + (int) (phoneNum ^ (phoneNum >>> 32));
 		result = prime * result + ((scan == null) ? 0 : scan.hashCode());
 		return result;
 	}
 
-
-
-
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -161,15 +192,20 @@ public class UserAccounts implements Serializable {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
+		if (genId == null) {
+			if (other.genId != null)
+				return false;
+		} else if (!genId.equals(other.genId))
+			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (menuOptions == null) {
-			if (other.menuOptions != null)
+		if (menu == null) {
+			if (other.menu != null)
 				return false;
-		} else if (!menuOptions.equals(other.menuOptions))
+		} else if (!menu.equals(other.menu))
 			return false;
 		if (phoneNum != other.phoneNum)
 			return false;
@@ -181,15 +217,16 @@ public class UserAccounts implements Serializable {
 		return true;
 	}
 
-
-
-
+	
+	
+	
 	@Override
 	public String toString() {
 		return "UserAccounts [firstName=" + firstName + ", lastName=" + lastName + ", phoneNum=" + phoneNum + ", email="
-				+ email + ", balance=" + balance + ", menuOptions=" + menuOptions + ", scan=" + scan + "]";
+				+ email + ", balance=" + balance + ", genId=" + genId + ", menu=" + menu + ", scan=" + scan + "]";
 	}
 	
+
 	
 	
 }

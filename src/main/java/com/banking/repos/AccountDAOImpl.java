@@ -35,23 +35,35 @@ public class AccountDAOImpl implements AccountDAO {
 	}
 
 	@Override
-	public void findById(String genId) {
+	public UserAccounts findById() {
+		
+		UserAccounts acc = new UserAccounts();
 		
 		try (Connection conn=ConnectionUtil.getConnection()){
-			String sql = "SELECT * FROM account_info WHERE account_id = "+genId+";";
+			
+			//chooses the row primary key in our database we will be saving our changes to
+			String sql = "SELECT * FROM account_info WHERE bank_id = "+acc.getUid()+";";
 			
 			Statement statement = conn.createStatement();
 			
 			ResultSet result = statement.executeQuery(sql);
 			
 			if (result.next()) {
-				UserAccounts acc = new UserAccounts();
+				
+				//saves our generated user ID to our database by calling the setUid method from UserAccounts class
 				acc.setUid(result.getString("account_id"));
+				//saves our balance to database by calling setBalance method from UserAccounts class
+				acc.setBalance(result.getDouble("account_balance"));
+				return acc;
+			} else {
+				return acc;
 			}
 			
+			//return acc;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return acc;
 		}
 		
 	}

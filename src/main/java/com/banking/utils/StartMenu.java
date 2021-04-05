@@ -1,15 +1,16 @@
 package com.banking.utils;
 
 import java.io.Serializable;
+
 import java.util.Scanner;
 
-import com.banking.service.NewUserAccount;
+import com.banking.models.UserAccounts;
 
 public class StartMenu implements Serializable{
 
 	//creates objects to reference our methods
-	NewUserAccount account = new NewUserAccount();
-	MainMenu menuOptions = new MainMenu();
+	UserAccounts account = new UserAccounts();
+	MainMenu menu = new MainMenu();
 	
 	Scanner scan = new Scanner(System.in);
 	
@@ -18,17 +19,19 @@ public class StartMenu implements Serializable{
 	//if they do not have an account prompts them to create one
 	public void startMenu() {
 		
-		System.out.println("Do you have an existing account? (Y/N)");
+		System.out.println("Welcome to the easy banking application.\n"
+				+ "Do you have an existing account? (Y/N)");
+		
 		String select = scan.nextLine().toLowerCase();
 
 		if (select.equals("y")) {
 			System.out.println("Please enter your username and password");
 			//insert authentication service
 			//after authentication goes to main menu
-			menuOptions.mainMenu();
+			menu.mainMenu();
 		} else if (select.equals("n")){
 			//passes in our updateAccount method from UserAccounts class to our newAccount object
-			account.updateUserAccount(null, null, 0, null);
+			account.UserAccounts(null, null, 0, null, null);
 		} else {
 			System.out.println("Invalid entry. Please try again.");
 			startMenu();
@@ -43,7 +46,7 @@ public class StartMenu implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((account == null) ? 0 : account.hashCode());
-		result = prime * result + ((menuOptions == null) ? 0 : menuOptions.hashCode());
+		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
 		result = prime * result + ((scan == null) ? 0 : scan.hashCode());
 		return result;
 	}
@@ -62,10 +65,10 @@ public class StartMenu implements Serializable{
 				return false;
 		} else if (!account.equals(other.account))
 			return false;
-		if (menuOptions == null) {
-			if (other.menuOptions != null)
+		if (menu == null) {
+			if (other.menu != null)
 				return false;
-		} else if (!menuOptions.equals(other.menuOptions))
+		} else if (!menu.equals(other.menu))
 			return false;
 		if (scan == null) {
 			if (other.scan != null)
@@ -80,6 +83,6 @@ public class StartMenu implements Serializable{
 
 	@Override
 	public String toString() {
-		return "StartMenu [account=" + account + ", menuOptions=" + menuOptions + ", scan=" + scan + "]";
+		return "StartMenu [account=" + account + ", menuOptions=" + menu + ", scan=" + scan + "]";
 	}
 }

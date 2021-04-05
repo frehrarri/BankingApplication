@@ -4,7 +4,8 @@ import com.banking.models.UserAccounts;
 
 public interface AccountDAO {
 	
-	public void findById(String genId);
+	public void findById(int accountId);
 	public void updateAccount(UserAccounts updateUserAccount);
+	
 	
 }
