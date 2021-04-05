@@ -24,16 +24,28 @@ public class UserAccountServices {
 		return false;
 	}
 
-	
-	
-	public void withdraw() {
+	public boolean withdraw(double amount, UserAccounts acc) {
+		if (amount < 1) {
+			return false;
+		}
+		acc.setBalance(acc.getBalance() - amount);
+		if (aDao.updateAccount(acc)) {
+			return true;
+		}
+		return false;
 	}
 
-	
-	
-	public void transfer() {
+	public boolean transfer(double amount, UserAccounts fromAcc, UserAccounts toAcc) {
+		if (amount < 1) {
+			return false;
+		}
+		fromAcc.setBalance(fromAcc.getBalance() - amount);
+		toAcc.setBalance(amount + toAcc.getBalance());
+		if (aDao.updateAccount(fromAcc) && aDao.updateAccount(toAcc)) {
+			return true;
+		}
+		return false;
+
 	}
 
-	
-	
 }
