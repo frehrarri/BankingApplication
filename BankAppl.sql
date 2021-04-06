@@ -4,7 +4,7 @@ CREATE TABLE account_info(account_id SERIAL,
 	first_name VARCHAR(30), 
 	last_name VARCHAR(30),
 	email VARCHAR(30) UNIQUE, 
-	primary_phone INTEGER UNIQUE,
+	primary_phone VARCHAR(10) UNIQUE,
 	account_balance NUMERIC (11,2),
 	PRIMARY KEY (account_id)
 );
@@ -20,3 +20,4 @@ CREATE TABLE credentials(
 		FOREIGN KEY (acct_ref_id)
 			REFERENCES account_info(account_id)
 );
+
