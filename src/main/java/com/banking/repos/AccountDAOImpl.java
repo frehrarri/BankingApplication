@@ -17,16 +17,15 @@ public class AccountDAOImpl implements AccountDAO {
 		
 		try (Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "UPDATE account_info SET balance = ? WHERE account_id = ?;";
+			String sql = "UPDATE account_info SET account_balance = ? WHERE account_id = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			int index = 0;
 			ps.setDouble(++index, updateUserAccount.getBalance());
-			ps.setNull(++index, java.sql.Types.INTEGER);
 			ps.setInt(++index, updateUserAccount.getUid());
 			
-			ps.execute(sql);
+			ps.execute();
 			
 			return true;
 			
