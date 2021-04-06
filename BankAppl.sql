@@ -5,7 +5,6 @@ CREATE TABLE account_info(account_id SERIAL,
 	last_name VARCHAR(30),
 	email VARCHAR(30) UNIQUE, 
 	primary_phone INTEGER UNIQUE,
-	bank_id VARCHAR(20) UNIQUE,
 	account_balance NUMERIC (11,2),
 	PRIMARY KEY (account_id)
 );
