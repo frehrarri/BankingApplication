@@ -38,7 +38,20 @@ public class MainMenu implements Serializable {
 		//updates account info
 		case 1:
 			UserAccounts account = new UserAccounts();
-			account.updateUserAccount(null, null, 0, null);
+			System.out.println("What is your first name?");
+			String firstName = scan.nextLine();
+			
+			System.out.println("What is your last name?");
+			String lastName = scan.nextLine();
+			
+			System.out.println("What is your phone number?");
+			long phone = scan.nextLong();
+			scan.nextLine();
+			
+			System.out.println("What is your email address?");
+			String email = scan.nextLine();
+			
+			account.updateUserAccount(firstName, lastName, phone, email);
 			break;
 		case 2:
 		//opens deposit interface
@@ -61,7 +74,7 @@ public class MainMenu implements Serializable {
 			break;
 		case 3:
 		//opens withdraw interface
-			System.out.println("What is the account number of the account you wish to make a deposit to?");
+			System.out.println("What is the account number of the account you wish to withdraw from?");
 			
 			int withdrawResponse = scan.nextInt();
 			scan.nextLine();
@@ -121,8 +134,6 @@ public class MainMenu implements Serializable {
 		}
 		mainMenu();
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -159,6 +170,9 @@ public class MainMenu implements Serializable {
 	public String toString() {
 		return "MainMenu [action=" + action + ", scan=" + scan + "]";
 	}
+	
+	
+
 
 	
 	
